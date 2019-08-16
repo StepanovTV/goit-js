@@ -7,7 +7,7 @@
 //   если запрещенных слов нет функция возвращает false.
 //   Слова в строке могут быть в произвольном регистре.
 
-const checkForSpam = function(str) {
+const checkForSpam = function checkForSpam(str) {
   const strUp = str.toLowerCase();
   return strUp.includes('spam') || strUp.includes('sale');
 };

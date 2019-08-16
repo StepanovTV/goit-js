@@ -11,22 +11,9 @@
 // и добавляет в конец строки троеточие '...',
 // после чего возвращает укороченную версию.
 
-const formatString = function(string, lenghSting = 40) {
-  const stringToArr = string.split('');
-
-  if (stringToArr.length > lenghSting) {
-    stringToArr.splice(lenghSting);
-    return `${stringToArr.join('')}...`;
-  } else {
-    return string;
-  }
-};
+const formatString = string => (string.length < 40 ? string : `${string.slice(0, 41)}...`);
 
 console.log(formatString('Curabitur ligula sapien, tincidunt non.'));
 console.log(formatString('Vestibulum facilisis, purus nec pulvinar iaculis.'));
 console.log(formatString('Curabitur ligula sapien.'));
-console.log(
-  formatString(
-    'Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.',
-  ),
-);
+console.log(formatString('Nunc sed turpis. Curabitur a felis in nunc fringilla tristique.'));

@@ -3,7 +3,7 @@
 // Задание 1
 // Напиши скрипт, который, для объекта user, последовательно:
 
-const user = {
+let user = {
   name: 'Mango',
   age: 20,
   hobby: 'html',

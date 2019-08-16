@@ -8,10 +8,7 @@
 
 // Вызовы функции для проверки работоспособности твоей реализации.
 
-const calculateEngravingPrice = function(message, pricePerWord) {
-  const arrayMassage = message.split(' ');
-  return arrayMassage.length * pricePerWord;
-};
+const calculateEngravingPrice = (message, pricePerWord) => message.split(' ').length * pricePerWord;
 
 console.log(
   calculateEngravingPrice(

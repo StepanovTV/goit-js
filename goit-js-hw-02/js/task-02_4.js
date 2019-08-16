@@ -6,9 +6,24 @@
 //  строку (в строке будут только слова и пробелы)
 //   и возвращает самое длинное слово в этой строке.
 
-// Вызовы функции для проверки работоспособности твоей реализации.
 
-const findLongestWord = function(string) {
+
+
+// const printSum = (summa)=> summa > 0 ? `Общая сумма чисел равна [${summa}]` : 'вы не ввели не одного числа';
+// Fri Aug 16, 2019 at 9:18 am
+// Profile picture for Gennadiy Gorbulin
+// Gennadiy Gorbulin
+// В целом ок.
+// Но надо лаконичнее.
+// Приходится запоминать лишние переменные, чтобы понять код.
+// Вот примеры как сделать запись короче и понятнее
+
+// const calculateEngravingPrice = (message, pricePerWord) => message.split(' ').length * pricePerWord;
+
+// const formatString = string => string.length < 40 ? string : `${string.slice(0, 41)}...`;
+// Fri Aug 16, 2019 at 9:21 am
+
+const findLongestWord = function findLongestWord(string) {
   const arrayString = string.split(' ');
 
   let longestWordLengh = arrayString[0];
@@ -16,7 +31,6 @@ const findLongestWord = function(string) {
   for (let i = 1; i < arrayString.length; i += 1) {
     if (longestWordLengh.length < arrayString[i].length) {
       longestWordLengh = arrayString[i];
-      break;
     }
   }
   return longestWordLengh;

@@ -16,11 +16,22 @@
 // Австралия - 170 кредитов
 // Индия - 80 кредитов
 // Ямайка - 120 кредитов
-const CHINA = 'китай';
-const CHILE = 'чили';
-const AUSTRALIA = 'австралия';
-const INDIA = 'индия';
-const JAMAICA = 'ямайка';
+
+// _______ ВАШ КОМЕНТАРИЙ ______
+// Gennadiy Gorbulin
+// task-01_5.js
+// нет смысла в каждом case делать обработку строки
+
+// Лучше присвоить переменной значение и затем один раз обработать результат.
+
+// И при обработке результата стоит сделать название страны с большой буквы.
+// Today at 12:58 am
+
+const CHINA = 'Китай';
+const CHILE = 'Чили';
+const AUSTRALIA = 'Австралия';
+const INDIA = 'Индия';
+const JAMAICA = 'Ямайка';
 const deliveryPriceChina = 100;
 const deliveryPriceChile = 250;
 const deliveryPriceAustralia = 170;
@@ -33,7 +44,7 @@ let message;
 if (userChoise === null) {
   message = 'Отменено пользователем!';
 } else {
-  userChoise = userChoise.toLowerCase();
+  userChoise = userChoise[0].toUpperCase() + userChoise.slice(1).toLowerCase();
 
   switch (userChoise) {
     case CHILE:
