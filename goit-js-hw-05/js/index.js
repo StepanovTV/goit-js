@@ -1,21 +1,5 @@
 'use strict';
 
-class Student {
-  constructor (){}
-}
-	
-console.log(typeof Student === 'function');
-
-	
-
-console.log({});
-
-console.log(new Array());
-
-console.log(new Object(new Object()));
-
-console.log(Object.create(null));
-
 class Hero {
   static randomProm = 'static properti';
   constructor(name, xp) {
