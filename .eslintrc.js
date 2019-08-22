@@ -16,7 +16,8 @@ module.exports = {
     },
     "rules": {
         "no-console": "off",
-        "strict" : "off"
+        "strict" : "off",
+        "import/extensions" : "off"
         
     }
 };
