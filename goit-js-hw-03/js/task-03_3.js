@@ -7,10 +7,10 @@
 // Сотрудники и кол-во выполненых задач содержатся как свойства объекта в формате
 // "имя":"кол-во задач".
 
-const findBestEmployee = employees => {
+const findBestEmployee = (employees) => {
   let max = 0;
   let bestEmployee;
-  for (let property in employees) {
+  for (const property in employees) {
     if (employees[property] > max) {
       max = employees[property];
       bestEmployee = property;
