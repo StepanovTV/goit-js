@@ -52,7 +52,7 @@ drawHtml(test);
 function answerValidation(dataArr, objectTest) {
   const { questions } = objectTest;
   const correctAnswers = questions.map(({ answer }) => answer);
-  console.log(correctAnswers);
+
   let sumCorectAnswer = 0;
 
   for (let i = 0; i < correctAnswers.length; i += 1) {
