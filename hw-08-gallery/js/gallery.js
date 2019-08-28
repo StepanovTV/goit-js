@@ -26,20 +26,25 @@ function addToElemenAfterbegin(html, selector) {
 addToElemenAfterbegin(createHtmlGalery(galleryItems), '.gallery');
 
 // ========== Galery LiteBox ==========
+const query = {
+  gallery: document.querySelector('.gallery'),
+  imgLghtbox: document.querySelector('.lightbox___image'),
+  liteboxOver: document.querySelector('.lightbox__content'),
+  divLightbox: document.querySelector('div.lightbox'),
+  closeModalBtn: document.querySelector('button[data-action="close-lightbox"]'),
+};
 
 // Открытие
 function openModal() {
-  const openLightbox = document.querySelector('div.lightbox');
-  openLightbox.classList.add('is-open');
+  query.divLightbox.classList.add('is-open');
   window.addEventListener('keydown', handlKeyPress);
 }
 // Закрытие
 function closeModal() {
-  document.querySelector('div.lightbox').classList.remove('is-open');
+  query.divLightbox.classList.remove('is-open');
   window.removeEventListener('keydown', handlKeyPress);
-  const imgiLghtboxResset = document.querySelector('.lightbox___image');
-  imgiLghtboxResset.setAttribute('alt', ' ');
-  imgiLghtboxResset.setAttribute('src', ' ');
+  query.imgLghtbox.setAttribute('alt', ' ');
+  query.imgLghtbox.setAttribute('src', ' ');
 }
 // Колбек для keydown
 function handlKeyPress(event) {
@@ -49,19 +54,20 @@ function handlKeyPress(event) {
   closeModal();
 }
 
+function closeModalOverlay(e) {
+  if (e.target !== e.currentTarget) return;
+  closeModal();
+  query.liteboxOver.removeEventListener('click', closeModalOverlay);
+}
 // обработка процесса открытие окна lightbox
+
 function lightboxOpenModal(elementForLightbox) {
-  const imgReplase = document.querySelector('.lightbox___image');
   const source = elementForLightbox.dataset.source;
   const alt = elementForLightbox.getAttribute('alt');
-  imgReplase.setAttribute('alt', alt);
-  imgReplase.setAttribute('src', source);
-  document.querySelector('.lightbox__content').addEventListener('click', (e) => {
-    if (e.target !== e.currentTarget) return;
-    closeModal();
-  });
-  const closeModalBtn = document.querySelector('button[data-action="close-lightbox"]');
-  closeModalBtn.addEventListener('click', closeModal);
+  query.imgLghtbox.setAttribute('alt', alt);
+  query.imgLghtbox.setAttribute('src', source);
+  query.liteboxOver.addEventListener('click', closeModalOverlay);
+  query.closeModalBtn.addEventListener('click', closeModal);
 
   openModal();
 }
@@ -74,15 +80,13 @@ const handleClickImg = (event) => {
   lightboxOpenModal(target);
 };
 
-const gallery = document.querySelector('.gallery');
-gallery.addEventListener('click', handleClickImg);
+query.gallery.addEventListener('click', handleClickImg);
 
 // ========== Lazy Load – отложенная загрузка изображений ==========
 
 const lazyLoad = (target) => {
   const options = {
-    rootMargin: '0px',
-    threshold: 0.1,
+    threshold: 0.5,
   };
   const io = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
